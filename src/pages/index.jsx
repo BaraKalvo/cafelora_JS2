@@ -14,7 +14,7 @@ const drinks = json.data;
 
 document.querySelector('#root').innerHTML = render(
   <div className="page">
-      <Header />
+      <Header showMenu={true} />
       <main>
         <Banner />
         <Menu drinks={drinks}/>
@@ -42,7 +42,7 @@ navEl.addEventListener('click', handleClickItem);
 
 const orderCafe = (event) => {
   event.preventDefault()
-  const id = event.currentTarget.dataset.id
+  const id = event.target.dataset.id
   console.log(id)
 
   fetch(`http://localhost:4000/api/drinks/${id}`, {
