@@ -39,3 +39,27 @@ const handleClickItem = () => {
 btnNavEl.addEventListener('click', handleClickNav);
 
 navEl.addEventListener('click', handleClickItem);
+
+const orderCafe = (event) => {
+  event.preventDefault()
+  const id = event.currentTarget.dataset.id
+  console.log(id)
+
+  fetch(`http://localhost:4000/api/drinks/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      [{ op: 'replace', path: '/ordered', value: true }]
+    ),
+  });
+
+  window.location.reload()
+};
+
+const forms = document.querySelectorAll('.drink__controls');
+forms.forEach((form) => {
+  form.addEventListener('submit', orderCafe);
+});
+
