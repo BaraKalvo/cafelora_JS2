@@ -2,7 +2,7 @@ import { OrderItem } from "../OrderItem"
 
 export const Order = ({items}) => {
     console.log(items);
-    
+
     return (
         <>
             {items.length === 0 ? (
@@ -18,16 +18,3 @@ export const Order = ({items}) => {
         </>
     )
 }
-
-/*
-        <>
-            {items.map((item) => (
-                <OrderItem 
-                    key={item.id}
-                    name={item.name}
-                    image={`http://localhost:4000${item.image}`}
-                />
-            ))}
-        </>
-
-        */

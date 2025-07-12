@@ -43,7 +43,8 @@ navEl.addEventListener('click', handleClickItem);
 const orderCafe = (event) => {
   event.preventDefault()
   const id = event.target.dataset.id
-  console.log(id)
+  const orderedString = event.target.dataset.ordered
+  const ordered = orderedString === "true";
 
   fetch(`http://localhost:4000/api/drinks/${id}`, {
     method: 'PATCH',
@@ -51,7 +52,7 @@ const orderCafe = (event) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(
-      [{ op: 'replace', path: '/ordered', value: true }]
+      [{ op: 'replace', path: '/ordered', value: !ordered }]
     ),
   });
 
